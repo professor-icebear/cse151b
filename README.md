@@ -76,19 +76,17 @@ Input JSONL
 
 ## Directory Structure
 
-Place fine-tuned weights or merged model parameters in `./emergency_final_model`. The workspace must match this layout exactly before running inference:
-
 ```
 .
-├── emergency_final_model/
-│   ├── config.json
-│   ├── model.safetensors
-│   ├── tokenizer.json
-│   └── tokenizer_config.json
 ├── data/
 │   └── public.jsonl
+├── results/
+│   └── final_submission.csv
+├── README.md
+├── requirements.txt
 ├── submission_pipeline.py
-└── README.md
+├── judger.py
+└── utils.p
 ```
 
 ---
@@ -116,6 +114,7 @@ Call `run_inference()` directly from a Python script or Jupyter notebook:
 ```python
 from submission_pipeline import run_inference
 
+# Running the pipeline dynamically streams the model weights from Hugging Face Hub
 run_inference(
     input_jsonl_path="data/public.jsonl",
     output_csv_path="results/final_submission.csv"
