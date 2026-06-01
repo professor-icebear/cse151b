@@ -118,7 +118,7 @@ from submission_pipeline import run_inference
 
 run_inference(
     input_jsonl_path="data/public.jsonl",
-    output_csv_path="results/KAGGLE_STRICT_943.csv"
+    output_csv_path="results/final_submission.csv"
 )
 ```
 
