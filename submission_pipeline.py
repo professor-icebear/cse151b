@@ -5,7 +5,7 @@ import pandas as pd
 from pathlib import Path
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
-def run_inference(input_jsonl_path="data/public.jsonl", output_csv_path="results/KAGGLE_STRICT_943.csv"):
+def run_inference(input_jsonl_path="data/public.jsonl", output_csv_path="results/final_submission.csv"):
     """
     Performs the full pipeline end-to-end:
     1. Loads the fine-tuned aligned reasoning model onto the GPU (H100).
