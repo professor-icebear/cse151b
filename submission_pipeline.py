@@ -14,18 +14,16 @@ def run_inference(input_jsonl_path="data/public.jsonl", output_csv_path="results
     4. Automatically matches the exact length of the input dataset.
     """
     print("=== [1/4] Initializing Aligned Reasoning Model ===")
-    MODEL_DIR = "./emergency_final_model"
+    MODEL_DIR = "icebear28/math-reasoning-aligned-model"
     
-    if not Path(MODEL_DIR).exists():
-        raise FileNotFoundError(f"Weights folder not found at {MODEL_DIR}. Please configure weights as instructed in README.")
-
-    # Load tokenizer
+    
+    # Load tokenizer directly from the cloud
     tokenizer = AutoTokenizer.from_pretrained(MODEL_DIR, trust_remote_code=True)
     if tokenizer.pad_token is None:
         tokenizer.pad_token = tokenizer.eos_token
         
-    # Load model weights on native bfloat16 configuration
-    print(f"Loading weights from: {MODEL_DIR}")
+    # Load model weights dynamically from the cloud Hub
+    print(f"Streaming weights seamlessly from Hugging Face Hub: {MODEL_DIR}")
     model = AutoModelForCausalLM.from_pretrained(
         MODEL_DIR,
         torch_dtype=torch.bfloat16,
